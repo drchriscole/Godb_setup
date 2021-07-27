@@ -19,8 +19,9 @@ http://old-releases.ubuntu.com/releases/bionic/ubuntu-18.04.4-server-arm64.iso
     sudo apt-get install mongodb python-pymongo python-flask 
     sudo apt-get install tabix libhts2 libhts-dev
     sudo apt-get install python-pysam
+    sudo apt-get install python-pip (for flask_wtf)
 
-*Packages not available via apt-get
+*Packages not available via apt-get*
 
   * flask_wtf
     * installed 0.14.3 due to a werkzueg dependency conflict with older versions
@@ -39,6 +40,8 @@ working document.
     * all the config files in <root>/cfg need to be checked for valid paths
       * in particular 'common.cfg', 'godb.cfg' and 'webapp.cfg'
       * strikes me that they should be rationalised and be more agnostic
+    * Now fixed to use the $GODBROOT environment variable instead
+
 
 
 
