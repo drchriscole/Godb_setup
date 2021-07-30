@@ -30,8 +30,6 @@ http://old-releases.ubuntu.com/releases/bionic/ubuntu-18.04.4-server-arm64.iso
     pip install -U https://github.com/wtforms/flask-wtf/archive/refs/tags/0.14.3.tar.gz
 
 
-
-
 *Config of GoDb codebase*
 
 This section will be obsolete as the codebase gets updated and is currently a 
@@ -39,11 +37,42 @@ working document.
 
     * all the config files in <root>/cfg need to be checked for valid paths
       * in particular 'common.cfg', 'godb.cfg' and 'webapp.cfg'
+      * also affy.cfg, 'broad.cfg', 'exome.cfg' and 'illumina.cfg'
       * strikes me that they should be rationalised and be more agnostic
-    * Now fixed to use the $GODBROOT environment variable instead
+    * Now they all use the $GODBROOT environment variable instead
 
+*Mongo DB data loading*
 
+Firstly, mongod needs to be running. Currently this is on localhost:27017, but 
+will need to be changed for production.
 
+All the VCF data must be in this structure under $DATADIR (defined in 
+cfg/common.cfg) which separates out each assay type:
+
+  $DATADIR/
+    -> affy/
+    -> broad/
+    -> exome/
+    -> illumina/
+
+The vcf data should be bgzip compressed, tabix indexed and have two files per 
+chromosome for all samples named:
+
+  chr1.vcf.gz     .. chr22.vcf.gz
+  chr1.vcf.gz.tbi .. chr22.vcf.gz.tbi
+
+The data are loaded via three shell scripts which call other perl/python scripts:
+
+    bash load/sh/load_variants_from_vcf_files.sh $GODBROOT/broad.cfg
+    bash load/sh/load_samples.sh $GODBROOT/broad.cfg
+    bash load/sh/load_filepaths.sh $GODBROOT/broad.cfg
+
+Repeat for each of the four assay types replacing the cfg file name to suit.
+
+Load the webapp via 'webapp/sh/run_server.sh' and the variants should be
+queryable from the interface on localhost:8085.
+
+Job done!
 
 ## Failed 20.04 Attempt
 
