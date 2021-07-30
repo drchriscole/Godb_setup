@@ -19,25 +19,25 @@ http://old-releases.ubuntu.com/releases/bionic/ubuntu-18.04.4-server-arm64.iso
     sudo apt-get install mongodb python-pymongo python-flask 
     sudo apt-get install tabix libhts2 libhts-dev
     sudo apt-get install python-pysam
-    sudo apt-get install python-pip (for flask_wtf)
+    sudo apt-get install python-pip       # for installing flask_wtf
+    
 
 *Packages not available via apt-get*
 
   * flask_wtf
-    * installed 0.14.3 due to a werkzueg dependency conflict with older versions
+    * installed v0.14.3 due to a werkzueg dependency conflict with older versions
     * need to install from source via pip
 
-    pip install -U https://github.com/wtforms/flask-wtf/archive/refs/tags/0.14.3.tar.gz
-
+          pip install -U https://github.com/wtforms/flask-wtf/archive/refs/tags/0.14.3.tar.gz
 
 *Config of GoDb codebase*
 
 This section will be obsolete as the codebase gets updated and is currently a 
 working document.
 
-    * all the config files in <root>/cfg need to be checked for valid paths
-      * in particular 'common.cfg', 'godb.cfg' and 'webapp.cfg'
-      * also affy.cfg, 'broad.cfg', 'exome.cfg' and 'illumina.cfg'
+  * all the config files in <root>/cfg need to be checked for valid paths
+    * in particular 'common.cfg', 'godb.cfg' and 'webapp.cfg'
+    * also affy.cfg, 'broad.cfg', 'exome.cfg' and 'illumina.cfg'
       * strikes me that they should be rationalised and be more agnostic
     * Now they all use the $GODBROOT environment variable instead
 
@@ -90,10 +90,13 @@ Start from Arm64 install of 20.04 Server
 After initial install of server
 
   1. Install Xubuntu GUI
+ 
     sudo apt install tasksel
     sudo tasksel install Xubuntu-desktop
     sudo reboot
+ 
   2. Intall software packages
+ 
     sudo apt-get install mongodb (v.3.6.8)
     sudo apt-get install python (v2.7.18)
 
