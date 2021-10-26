@@ -49,17 +49,17 @@ will need to be changed for production.
 All the VCF data must be in this structure under $DATADIR (defined in 
 cfg/common.cfg) which separates out each assay type:
 
-  $DATADIR/
-    -> affy/
-    -> broad/
-    -> exome/
-    -> illumina/
+    $DATADIR/
+      -> affy/
+      -> broad/
+      -> exome/
+      -> illumina/
 
 The vcf data should be bgzip compressed, tabix indexed and have two files per 
 chromosome for all samples named:
 
-  chr1.vcf.gz     .. chr22.vcf.gz
-  chr1.vcf.gz.tbi .. chr22.vcf.gz.tbi
+    chr1.vcf.gz     .. chr22.vcf.gz
+    chr1.vcf.gz.tbi .. chr22.vcf.gz.tbi
 
 The data are loaded via three shell scripts which call other perl/python scripts:
 
