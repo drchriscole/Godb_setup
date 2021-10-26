@@ -63,13 +63,13 @@ chromosome for all samples named:
 
 The data are loaded via three shell scripts which call other perl/python scripts:
 
-    bash load/sh/load_variants_from_vcf_files.sh $GODBROOT/broad.cfg
-    bash load/sh/load_samples.sh $GODBROOT/broad.cfg
-    bash load/sh/load_filepaths.sh $GODBROOT/broad.cfg
+    bash load/sh/load_variants_from_vcf_files.sh $GODBROOT/cfg/broad.cfg
+    bash load/sh/load_samples.sh $GODBROOT/cfg/broad.cfg
+    bash load/sh/load_filepaths.sh $GODBROOT/cfg/broad.cfg
 
 Repeat for each of the four assay types replacing the cfg file name to suit.
 
-Load the webapp via 'webapp/sh/run_server.sh' and the variants should be
+Load the webapp via `bash webapp/sh/run_server.sh` and the variants should be
 queryable from the interface on localhost:8085.
 
 Job done!
