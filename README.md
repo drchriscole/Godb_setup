@@ -2,6 +2,8 @@
 
 ## Attempt with Ubuntu 18.04
 
+### This is unique for M1 macs.
+
 Followed the guide from https://mac.getutm.app/gallery/ubuntu-20-04,
 but *importantly* the 'Display' needs to be set to 'Console only' for
 the 18.04 iso from:
@@ -13,6 +15,10 @@ http://old-releases.ubuntu.com/releases/bionic/ubuntu-18.04.4-server-arm64.iso
     sudo apt install tasksel
     sudo tasksel install xubuntu-desktop
     sudo reboot
+
+### Generic Instructions
+
+Once you've got an Ubuntu 18.04 up and running continue here.
 
 *Package Installation*
 
